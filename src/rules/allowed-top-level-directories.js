@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import {
   clientDir,
+  sharedDir,
   serverDir,
 } from "../utils/paths.js";
 
@@ -23,7 +24,7 @@ export default {
   meta: {
     type: "problem",
     docs: {
-      description: "client/server 直下の許可ディレクトリ以外の存在を禁止する",
+      description: "client/shared/server 直下の許可ディレクトリ以外の存在を禁止する",
     },
     schema: [],
   },
@@ -41,10 +42,15 @@ export default {
               "components",
               "parts",
               "actions",
+              "model",
               "services",
               "repositorys",
               "store",
             ],
+          );
+          const sharedUnexpectedDirectories = getUnexpectedDirectories(
+            sharedDir,
+            ["entity"],
           );
           const serverUnexpectedDirectories = getUnexpectedDirectories(
             serverDir,
@@ -54,6 +60,9 @@ export default {
           topLevelDirectoryViolations = [
             ...clientUnexpectedDirectories.map((directoryName) => ({
               message: `client 直下に許可されていないディレクトリがあります: ${directoryName}`,
+            })),
+            ...sharedUnexpectedDirectories.map((directoryName) => ({
+              message: `shared 直下に許可されていないディレクトリがあります: ${directoryName}`,
             })),
             ...serverUnexpectedDirectories.map((directoryName) => ({
               message: `server 直下に許可されていないディレクトリがあります: ${directoryName}`,

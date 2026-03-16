@@ -4,8 +4,10 @@ const projectRoot = process.cwd();
 
 export const appDir = path.join(projectRoot, "app");
 export const clientDir = path.join(projectRoot, "client");
+export const sharedDir = path.join(projectRoot, "shared");
 export const serverDir = path.join(projectRoot, "server");
 export const clientActionsDir = path.join(clientDir, "actions");
+export const clientModelDir = path.join(clientDir, "model");
 export const clientServicesDir = path.join(clientDir, "services");
 export const clientRepositorysDir = path.join(clientDir, "repositorys");
 export const clientPartsDir = path.join(clientDir, "parts");
@@ -13,6 +15,7 @@ export const clientStoreDir = path.join(clientDir, "store");
 export const clientStoreAppDir = path.join(clientStoreDir, "app");
 export const clientStorePagesDir = path.join(clientStoreDir, "pages");
 export const clientComponentsDir = path.join(clientDir, "components");
+export const sharedEntityDir = path.join(sharedDir, "entity");
 export const serverServiceDir = path.join(serverDir, "service");
 export const serverRepositoryDir = path.join(serverDir, "repository");
 

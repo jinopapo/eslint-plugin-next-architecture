@@ -3,12 +3,14 @@ import {
   appDir,
   clientActionsDir,
   clientComponentsDir,
+  clientModelDir,
   clientPartsDir,
   clientRepositorysDir,
   clientServicesDir,
   clientStoreDir,
   isInside,
   resolveImportPath,
+  sharedEntityDir,
   serverRepositoryDir,
   serverServiceDir,
 } from "../utils/paths.js";
@@ -29,6 +31,12 @@ const restrictions = [
     targetDir: clientActionsDir,
     allowedImporterDirs: [clientComponentsDir],
     message: "client/actions は client/components からのみ参照できます。",
+  },
+  {
+    targetDir: clientModelDir,
+    allowedImporterDirs: [clientServicesDir, clientActionsDir, clientComponentsDir],
+    message:
+      "client/model は client/services・client/actions・client/components からのみ参照できます。",
   },
   {
     targetDir: clientServicesDir,
@@ -55,6 +63,12 @@ const restrictions = [
     allowedImporterDirs: [serverServiceDir],
     message: "server/repository は server/service からのみ参照できます。",
   },
+  {
+    targetDir: sharedEntityDir,
+    allowedImporterDirs: [serverServiceDir, serverRepositoryDir, clientRepositorysDir],
+    message:
+      "shared/entity は server/service・server/repository・client/repositorys からのみ参照できます。",
+  },
 ];
 
 export default {
@@ -62,7 +76,7 @@ export default {
     type: "problem",
     docs: {
       description:
-        "client/components/actions/services/repositorys/store と server/service|repository の呼び出し元レイヤーを制限する",
+        "client/components/actions/model/services/repositorys/store、shared/entity、server/service|repository の呼び出し元レイヤーを制限する",
     },
     schema: [],
   },

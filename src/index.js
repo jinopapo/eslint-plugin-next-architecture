@@ -10,6 +10,7 @@ import noSameLayerDependency from "./rules/no-same-layer-dependency.js";
 import partsOnlyPartsDependency from "./rules/parts-only-parts-dependency.js";
 import restrictedClientLayerCallers from "./rules/restricted-client-layer-callers.js";
 import storePagesActionPageBoundary from "./rules/store-pages-action-page-boundary.js";
+import typeOnlyLayerDefinitions from "./rules/type-only-layer-definitions.js";
 
 const pluginName = "next-architecture";
 
@@ -25,6 +26,7 @@ const rules = {
   "parts-only-parts-dependency": partsOnlyPartsDependency,
   "restricted-client-layer-callers": restrictedClientLayerCallers,
   "store-pages-action-page-boundary": storePagesActionPageBoundary,
+  "type-only-layer-definitions": typeOnlyLayerDefinitions,
 };
 
 const recommendedRules = Object.fromEntries(
