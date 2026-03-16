@@ -1,0 +1,20 @@
+{
+  "name": "eslint-plugin-next-architecture",
+  "version": "0.1.0",
+  "description": "Opinionated ESLint plugin for Next.js architecture constraints",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "nextjs",
+    "architecture"
+  ],
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.0.0"
+  }
+}
